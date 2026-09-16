@@ -8,7 +8,23 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-<h1>my name is {{ firstName }}</h1>
-<p>i am {{ age }} years old</p>
+<div class="container">
+  <h2>Game List</h2>
+
+  @for (game of gameList; track game.id) {
+    <div class="game-card">
+      <h3>{{ game.name }}</h3>
+      <p>latest version: {{ game.latestVer }}</p>
+      <p>release date: {{ game.releaseDate }}</p>
+      <p>max local players: {{ game.localPlayers }}</p>
+      @if (game.onlinePlayers) {
+        <p>max online players: {{ game.onlinePlayers }}</p>
+      }
+
+    </div>
+  } @empty {
+    <p>no games? :(</p>
+  }
+</div>
 </body>
 </html>

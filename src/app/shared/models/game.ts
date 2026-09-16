@@ -1,7 +1,7 @@
 export interface Game {
   id: number;
   name: string;
-  fileSize: string;
+  latestVer: number;
   releaseDate: string;
   localPlayers: number | string;
   onlinePlayers?: number | string;
