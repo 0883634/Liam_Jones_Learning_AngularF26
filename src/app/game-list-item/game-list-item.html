@@ -1,0 +1,27 @@
+<h2>{{ game().name }}</h2>
+<p>Latest Version: {{ game().latestVer }}</p>
+<p>Release Date: {{ game().releaseDate }}</p>
+
+@switch (game().localPlayers) {
+  @case (1) {
+    <span>Single Player</span>
+  }
+  @case (2) {
+    <span>Duo Local</span>
+  }
+  @case (4) {
+    <span>Squad Local</span>
+  }
+  @default {
+    <span>{{ game().localPlayers }} Player Local</span>
+  }
+}
+
+@if (game().onlinePlayers) {
+  <p>max online players: {{ game().onlinePlayers }}</p>
+
+} @else {
+  <p>no online multiplayer</p>
+}
+
+<footer>September 23, 2026</footer>
