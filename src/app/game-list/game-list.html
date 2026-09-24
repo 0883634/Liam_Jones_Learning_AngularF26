@@ -2,11 +2,13 @@
   <h2>Game List</h2>
 
   @for (game of gameList; track game.id) {
-    <app-game-list-item [game]="game"></app-game-list-item>
+    <app-game-list-item [game]="game" (gameEvent)="doGameEvent($event)"></app-game-list-item>
   } @empty {
     <p>no games? :(</p>
   }
+
 </div>
+<footer>September 23, 2026</footer>
 <!--
 <h3>{{ game.name }}</h3>
 <p>latest version: {{ game.latestVer }}</p>

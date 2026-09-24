@@ -1,4 +1,6 @@
-<h2>{{ game().name }}</h2>
+<h2 (click)="gameEvent.emit({ id: game().id, action: 'completed' })">
+  {{ game().name }}
+</h2>
 <p>Latest Version: {{ game().latestVer }}</p>
 <p>Release Date: {{ game().releaseDate }}</p>
 
@@ -23,5 +25,3 @@
 } @else {
   <p>no online multiplayer</p>
 }
-
-<footer>September 23, 2026</footer>

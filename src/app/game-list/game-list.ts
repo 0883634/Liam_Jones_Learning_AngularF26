@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Game } from '../shared/models/game';
-import {GameListItem} from '../game-list-item/game-list-item';
+import {GameEvent, GameListItem} from '../game-list-item/game-list-item';
 
 
 @Component({
@@ -10,6 +10,9 @@ import {GameListItem} from '../game-list-item/game-list-item';
   imports: [GameListItem],
 })
 export class GameList {
+  doGameEvent(event: GameEvent): void {
+    console.log(event);
+  }
   gameList: Game[] = [
     {
       id: 1,
@@ -19,7 +22,11 @@ export class GameList {
       localPlayers: 4,
       onlinePlayers: 30,
     },
-    { id: 2, name: 'Knack', latestVer: 1.0, releaseDate: 'nov 15, 2013', localPlayers: 2 },
+    { id: 2,
+      name: 'Knack',
+      latestVer: 1.0,
+      releaseDate: 'nov 15, 2013',
+      localPlayers: 2 },
     {
       id: 3,
       name: 'Bloodborne',
@@ -28,9 +35,13 @@ export class GameList {
       localPlayers: 1,
       onlinePlayers: 5,
     },
-    { id: 4, name: 'Hollow Knight', latestVer: 1.5, releaseDate: 'feb 24, 2017', localPlayers: 1 },
+    { id: 4,
+      name: 'Hollow Knight',
+      latestVer: 1.5,
+      releaseDate: 'feb 24, 2017',
+      localPlayers: 1 },
     {
-      id: 1,
+      id: 5,
       name: 'Darksouls',
       latestVer: 1.03,
       releaseDate: 'sept 22, 2011',
