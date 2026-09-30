@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Game List</h2>
 
-  @for (game of gameList; track game.id) {
+  @for (game of gameList(); track game.id) {
     <app-game-list-item [game]="game" (gameEvent)="doGameEvent($event)"></app-game-list-item>
   } @empty {
     <p>no games? :(</p>
