@@ -7,6 +7,16 @@
     <p>no games? :(</p>
   }
 
+  <h3>Games with Online Multiplayer: </h3>
+
+  <ul>
+  @for (game of gameList(); track game.id) {
+    @if (game.onlinePlayers !== undefined) {
+      <li>{{ game.name }}</li>
+    }
+  }
+  </ul>
+
 </div>
 <footer>September 23, 2026</footer>
 <!--

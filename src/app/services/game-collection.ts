@@ -1,4 +1,4 @@
-import { Service, signal } from '@angular/core';
+import { Service, signal, computed, effect } from '@angular/core';
 import { Game } from '../shared/models/game';
 
 @Service()
@@ -53,4 +53,15 @@ export class GameCollection {
   ]);
 
   gamesList = this.games.asReadonly();
+
+  onlineGames = computed(() => this.games().filter((game) => game.onlinePlayers !== undefined));
+
+  constructor() {
+    effect(() => {
+      console.log('Size of games collection: ', this.gamesList());
+    });
+  }
+  addGame(newGame: Game): void {
+    this.games.update((list) => [...list, newGame]);
+  }
 }
