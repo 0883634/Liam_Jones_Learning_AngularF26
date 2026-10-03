@@ -56,11 +56,16 @@ export class GameCollection {
 
   onlineGames = computed(() => this.games().filter((game) => game.onlinePlayers !== undefined));
 
+  onlineGameCount = computed(() => this.onlineGames().length);
   constructor() {
     effect(() => {
       console.log('Size of games collection: ', this.gamesList());
     });
   }
+  removeGame(id: number): void {
+    this.games.update((list) => list.filter((game) => game.id !== id));
+  }
+
   addGame(newGame: Game): void {
     this.games.update((list) => [...list, newGame]);
   }

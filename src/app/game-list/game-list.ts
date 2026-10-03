@@ -11,9 +11,10 @@ import {GameEvent, GameListItem} from '../game-list-item/game-list-item';
 })
 export class GameList {
   doGameEvent(event: GameEvent): void {
-    console.log(event);
+    this.gameCollection.removeGame(event.id);
   }
 
   private gameCollection = inject(GameCollection);
   gameList = this.gameCollection.gamesList;
+  onlineGameCount = this.gameCollection.onlineGameCount;
 }
