@@ -5,5 +5,4 @@ export interface Game {
   releaseDate: string;
   localPlayers: number | string;
   onlinePlayers?: number | string;
-
 }
