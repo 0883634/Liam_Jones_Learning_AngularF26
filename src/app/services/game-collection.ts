@@ -1,8 +1,11 @@
-import { Service, signal, computed, effect } from '@angular/core';
+import { Service, signal, computed, effect, inject } from '@angular/core';
 import { Game } from '../shared/models/game';
+import { APP_CONFIG } from '../shared/config/configuration';
 
 @Service()
 export class GameCollection {
+  private config = inject(APP_CONFIG);
+
   private games = signal<Game[]>([
     {
       id: 1,
@@ -52,9 +55,23 @@ export class GameCollection {
     },
   ]);
 
-  gamesList = this.games.asReadonly();
+  //gamesList = this.games.asReadonly();
 
-  onlineGames = computed(() => this.games().filter((game) => game.onlinePlayers !== undefined));
+  gamesList = computed(() => {
+    switch (this.config.defaultFilter) {
+      case 'all':
+        return this.games();
+      case 'single':
+        return this.games().filter((game) => game.localPlayers == 1);
+      case 'duo':
+        return this.games().filter((game) => game.localPlayers == 2);
+      case 'squad':
+        return this.games().filter((game) => game.localPlayers == 4);
+      default:
+        return this.games();
+    }
+  }); // i'll admit i got a little experimental here. hopefully i didnt do anything i wasnt supposed to.
+  onlineGames = computed(() => this.gamesList().filter((game) => game.onlinePlayers !== undefined));
 
   onlineGameCount = computed(() => this.onlineGames().length);
   constructor() {
