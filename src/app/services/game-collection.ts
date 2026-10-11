@@ -71,6 +71,7 @@ export class GameCollection {
         return this.games();
     }
   }); // i'll admit i got a little experimental here. hopefully i didnt do anything i wasnt supposed to.
+
   onlineGames = computed(() => this.gamesList().filter((game) => game.onlinePlayers !== undefined));
 
   onlineGameCount = computed(() => this.onlineGames().length);
