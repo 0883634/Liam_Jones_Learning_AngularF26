@@ -1,0 +1,33 @@
+<form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+
+  <label for="name">Game Name</label>
+  <input id="name" type="text" formControlName="name">
+  @if (
+    gameForm.controls.name.touched && gameForm.controls.name.hasError('required')) {
+    <p>A game name is required.</p>
+  }
+
+  @if (
+    gameForm.controls.name.touched && gameForm.controls.name.hasError('minlength')) {
+    <p>...you did not find a game that is a single character long.</p>
+  }
+
+  <label for="latestVer">Latest Version</label>
+  <input id="latestVer" type="number" formControlName="latestVer">
+
+  <label for="releaseDate">Release Date</label>
+  <input id="releaseDate" type="text" formControlName="releaseDate">
+
+  <label for="localPlayers">Local Players</label>
+  <input id="localPlayers" type="number" formControlName="localPlayers">
+  @if (
+    gameForm.controls.localPlayers.touched && gameForm.controls.localPlayers.hasError('required')) {
+    <p>The number of local players is required</p>
+  }
+
+  <label for="onlinePlayers">Online Players</label>
+  <input id="onlinePlayers" type="number" formControlName="onlinePlayers">
+
+  <button type="submit" [disabled]="gameForm.invalid">Add Game</button>
+
+</form>

@@ -84,6 +84,10 @@ export class GameCollection {
     this.games.update((list) => list.filter((game) => game.id !== id));
   }
 
+  getGameById(id: number): Game | undefined {
+    return this.games().find((game) => game.id === id);
+  }
+
   addGame(newGame: Game): void {
     this.games.update((list) => [...list, newGame]);
   }
