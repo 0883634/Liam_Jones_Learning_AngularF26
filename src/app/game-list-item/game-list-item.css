@@ -1,4 +1,9 @@
 :host {
   display: block;
   border: 2px solid black;
+  text-align: center;
+}
+
+h2 {
+  border-bottom: 1px solid black;
 }

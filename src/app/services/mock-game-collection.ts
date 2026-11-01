@@ -1,4 +1,4 @@
-import { Service, signal, computed, effect, inject } from '@angular/core';
+import { Service, signal, computed, effect, inject, Injectable } from '@angular/core';
 import { Game } from '../shared/models/game';
 import { APP_CONFIG } from '../shared/config/configuration';
 

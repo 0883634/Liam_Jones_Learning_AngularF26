@@ -21,7 +21,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: GameCollection,
       //** THE THING I NEED TO TOGGLE WHEN I NEED TO USE THE MOCK COLLECTION **//
-      useClass: MockGameCollection,
+      useClass: GameCollection,
       //** ***************************************************************** **//
     },
   ],
