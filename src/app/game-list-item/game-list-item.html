@@ -1,6 +1,11 @@
 <h2 (click)="gameEvent.emit({ id: game().id, action: 'completed' })">
   {{ game().name }}
 </h2>
+
+<button [routerLink]="['/games', game().id]">
+  View Details
+</button>
+<!--
 <p>Latest Version: {{ game().latestVer }}</p>
 <p>Release Date: {{ game().releaseDate }}</p>
 
@@ -25,3 +30,4 @@
 } @else {
   <p>no online multiplayer</p>
 }
+-->

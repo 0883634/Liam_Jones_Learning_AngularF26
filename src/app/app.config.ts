@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app.routes';
 import {APP_CONFIG} from './shared/config/configuration'
 import { GameCollection } from './services/game-collection';
@@ -8,7 +8,7 @@ import { MockGameCollection } from './services/mock-game-collection';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
+    provideRouter(routes, withComponentInputBinding()),
     {
       provide: APP_CONFIG,
       useValue: {

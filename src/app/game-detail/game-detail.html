@@ -1,0 +1,31 @@
+@if (game(); as g) {
+
+  <p>Latest Version: {{ g.latestVer }}</p>
+  <p>Release Date: {{ g.releaseDate }}</p>
+
+  @switch (g.localPlayers) {
+    @case (1) {
+      <span>Single Player</span>
+    }
+    @case (2) {
+      <span>Duo Local</span>
+    }
+    @case (4) {
+      <span>Squad Local</span>
+    }
+    @default {
+      <span>{{ g.localPlayers }} Player Local</span>
+    }
+  }
+
+  @if (g.onlinePlayers) {
+    <p>Max Online Players: {{ g.onlinePlayers }}</p>
+  } @else {
+    <p>No Online Multiplayer</p>
+  }
+
+} @else {
+
+  <p>Game not found.</p>
+
+}
