@@ -91,4 +91,9 @@ export class GameCollection {
   addGame(newGame: Game): void {
     this.games.update((list) => [...list, newGame]);
   }
+
+  updateGame(updatedGame: Game): void {
+    this.games.update((list) => list.map((game) => (game.id === updatedGame.id ? updatedGame : game)),
+    );
+  }
 }

@@ -1,3 +1,5 @@
+<h2>{{ id() ? 'Edit Game' : 'Add Game' }}</h2>
+
 <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
 
   <label for="name">Game Name</label>
@@ -28,6 +30,6 @@
   <label for="onlinePlayers">Online Players</label>
   <input id="onlinePlayers" type="number" formControlName="onlinePlayers">
 
-  <button type="submit" [disabled]="gameForm.invalid">Add Game</button>
+  <button type="submit" [disabled]="gameForm.invalid">{{ id() ? 'Save Changes' : 'Add Game' }}</button>
 
 </form>

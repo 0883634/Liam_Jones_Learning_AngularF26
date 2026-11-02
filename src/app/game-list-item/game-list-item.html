@@ -5,6 +5,9 @@
 <button [routerLink]="['/games', game().id]">
   View Details
 </button>
+<button [routerLink]="['/games/edit', game().id]">
+  Edit
+</button>
 <!--
 <p>Latest Version: {{ game().latestVer }}</p>
 <p>Release Date: {{ game().releaseDate }}</p>

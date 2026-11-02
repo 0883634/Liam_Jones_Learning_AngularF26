@@ -37,31 +37,26 @@ export class GameForm {
           name: game.name,
           latestVer: game.latestVer,
           releaseDate: game.releaseDate,
-          localPlayers: game.localPlayers,
-          onlinePlayers: game.onlinePlayers ?? 0,
+          localPlayers: Number(game.localPlayers),
+          onlinePlayers: Number(game.onlinePlayers) ?? 0,
         });
       }
     });
   }
 
   onSubmit(): void {
-    console.log('submit clicked');
-    console.log('valid?', this.gameForm.valid);
-    if (this.gameForm.invalid) {
-      return;
-    }
-
     const value = this.gameForm.getRawValue();
 
-    this.gameCollection.addGame({
-      id: Date.now(),
-      ...value,
-    });
-
-    this.gameForm.reset({
-      latestVer: 1.0,
-      localPlayers: 1,
-      onlinePlayers: 0,
-    });
+    if (this.id() !== undefined) {
+      this.gameCollection.updateGame({
+        id: Number(this.id()),
+        ...value,
+      });
+    } else {
+      this.gameCollection.addGame({
+        id: Date.now(),
+        ...value,
+      });
+    }
   }
 }
