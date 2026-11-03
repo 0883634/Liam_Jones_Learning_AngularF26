@@ -1,6 +1,9 @@
 import { Component, effect, inject, input } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GameCollection } from '../services/game-collection';
+import { whiteSpaceValidator } from '../services/validators/whiteSpace-validator';
+import { leagueOfLegendsValidator } from '../services/validators/leagueOfLegends-validator';
+import { playerValidator } from '../services/validators/player-validator';
 
 
 @Component({
@@ -15,12 +18,16 @@ export class GameForm {
   private gameCollection = inject(GameCollection);
 
   gameForm = this.fb.nonNullable.group({
-    name: ['', [Validators.required, Validators.minLength(2)]],
+    name: ['', [Validators.required, Validators.minLength(2), whiteSpaceValidator, leagueOfLegendsValidator]],
     latestVer: [1.0],
     releaseDate: [''],
     localPlayers: [1, Validators.required],
     onlinePlayers: [0],
-  });
+  },
+    {
+      validators: playerValidator
+    }
+  );
 
   constructor() {
     effect(() => {
@@ -57,6 +64,14 @@ export class GameForm {
         id: Date.now(),
         ...value,
       });
+      this.gameForm.reset({
+        name: '',
+        latestVer: 1.0,
+        releaseDate: '',
+        localPlayers: 1,
+        onlinePlayers: 0,
+      });
+
     }
   }
 }
