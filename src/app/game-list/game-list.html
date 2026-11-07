@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Game List</h2>
+
+  @for (game of gameList(); track game.id) {
+    <app-game-list-item [game]="game" (gameEvent)="doGameEvent($event)"></app-game-list-item>
+  } @empty {
+    <p>no games? :(</p>
+  }
+
+  <h3>Games with Online Multiplayer: {{ onlineGameCount() }}</h3>
+
+  <ul>
+    @for (game of onlineGames(); track game.id) {
+      <li>{{ game.name }}</li>
+    }
+  </ul>
+
+</div>
+<footer>September 23, 2026</footer>

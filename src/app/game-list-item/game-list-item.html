@@ -1,0 +1,36 @@
+<h2 (click)="gameEvent.emit({ id: game().id, action: 'completed' })">
+  {{ game().name }}
+</h2>
+
+<button [routerLink]="['/games', game().id]">
+  View Details
+</button>
+<button [routerLink]="['/games/edit', game().id]">
+  Edit
+</button>
+<!--
+<p>Latest Version: {{ game().latestVer }}</p>
+<p>Release Date: {{ game().releaseDate }}</p>
+
+@switch (game().localPlayers) {
+  @case (1) {
+    <span>Single Player</span>
+  }
+  @case (2) {
+    <span>Duo Local</span>
+  }
+  @case (4) {
+    <span>Squad Local</span>
+  }
+  @default {
+    <span>{{ game().localPlayers }} Player Local</span>
+  }
+}
+
+@if (game().onlinePlayers) {
+  <p>max online players: {{ game().onlinePlayers }}</p>
+
+} @else {
+  <p>no online multiplayer</p>
+}
+-->
