@@ -2,7 +2,7 @@ import { InjectionToken } from '@angular/core';
 
 export interface AppConfig {
 apiBaseUrl: string;
-defaultFilter: string; //gonna do something with this later
+defaultFilter: string;
 }
 
 export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');

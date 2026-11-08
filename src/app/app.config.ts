@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_CONFIG,
       useValue: {
-        apiBaseUrl: 'https://placeholder.example.com/api',
+        apiBaseUrl: 'https://www.freetogame.com/api',
         //** THE THING I NEED TO CHANGE TO ALTER THE FILTER **//
         defaultFilter: 'all',
         //** ********************************************** **//
