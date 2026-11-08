@@ -1,5 +1,6 @@
 <div class="container">
   <h2>Game List</h2>
+  <h3>(changes are local only)</h3>
 
   @for (game of gameList(); track game.id) {
     <app-game-list-item [game]="game" (gameEvent)="doGameEvent($event)"></app-game-list-item>

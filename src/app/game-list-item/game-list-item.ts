@@ -16,4 +16,5 @@ export interface GameEvent {
 export class GameListItem {
   game = input.required<Game>();
   gameEvent = output<GameEvent>();
+  protected readonly GameCollection = GameCollection;
 }

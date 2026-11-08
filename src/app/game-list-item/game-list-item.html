@@ -2,12 +2,9 @@
   {{ game().name }}
 </h2>
 
-<button [routerLink]="['/games', game().id]">
-  View Details
-</button>
-<button [routerLink]="['/games/edit', game().id]">
-  Edit
-</button>
+<button [routerLink]="['/games', game().id]">View Details</button>
+<button [routerLink]="['/games/edit', game().id]">Edit</button>
+<button (click)="gameEvent.emit({ id: game().id, action: 'completed' })">Delete</button>
 <!--
 <p>Latest Version: {{ game().latestVer }}</p>
 <p>Release Date: {{ game().releaseDate }}</p>
