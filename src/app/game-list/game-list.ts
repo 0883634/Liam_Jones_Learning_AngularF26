@@ -16,6 +16,6 @@ export class GameList {
 
   private gameCollection = inject(GameCollection);
   gameList = this.gameCollection.gamesList;
-  onlineGames = this.gameCollection.onlineGames;
-  onlineGameCount = this.gameCollection.onlineGameCount;
+  //onlineGames = this.gameCollection.onlineGames;
+  //onlineGameCount = this.gameCollection.onlineGameCount;
 }

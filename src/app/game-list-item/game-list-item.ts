@@ -1,6 +1,8 @@
 import { Component, input, output } from '@angular/core';
 import { Game } from '../shared/models/game';
 import { RouterLink } from '@angular/router';
+import { GameCollection } from '../services/game-collection';
+
 export interface GameEvent {
   id: number;
   action: 'completed';

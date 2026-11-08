@@ -18,14 +18,15 @@ export class GameForm {
   private gameCollection = inject(GameCollection);
 
   gameForm = this.fb.nonNullable.group({
-    name: ['', [Validators.required, Validators.minLength(2), whiteSpaceValidator, leagueOfLegendsValidator]],
-    latestVer: [1.0],
-    releaseDate: [''],
-    localPlayers: [1, Validators.required],
-    onlinePlayers: [0],
+      name: ['', [Validators.required, Validators.minLength(2), whiteSpaceValidator, leagueOfLegendsValidator]],
+      releaseDate: [''],
+      platform: [''],
+      genre: [''],
+      publisher: [''],
+      developer: ['']
   },
     {
-      validators: playerValidator
+      //validators: playerValidator
     }
   );
 
@@ -42,10 +43,11 @@ export class GameForm {
       if (game) {
         this.gameForm.patchValue({
           name: game.name,
-          latestVer: game.latestVer,
           releaseDate: game.releaseDate,
-          localPlayers: Number(game.localPlayers),
-          onlinePlayers: Number(game.onlinePlayers) ?? 0,
+          platform: game.platform,
+          genre: game.genre,
+          publisher: game.publisher,
+          developer: game.developer
         });
       }
     });
@@ -66,10 +68,11 @@ export class GameForm {
       });
       this.gameForm.reset({
         name: '',
-        latestVer: 1.0,
         releaseDate: '',
-        localPlayers: 1,
-        onlinePlayers: 0,
+        platform: '',
+        genre: '',
+        publisher: '',
+        developer: ''
       });
 
     }

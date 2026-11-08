@@ -20,25 +20,20 @@
     <p>no.</p>
   }
 
-  <label for="latestVer">Latest Version</label>
-  <input id="latestVer" type="number" formControlName="latestVer">
-
   <label for="releaseDate">Release Date</label>
   <input id="releaseDate" type="text" formControlName="releaseDate">
 
-  <label for="localPlayers">Local Players</label>
-  <input id="localPlayers" type="number" formControlName="localPlayers">
-  @if (
-    gameForm.controls.localPlayers.touched && gameForm.controls.localPlayers.hasError('required')) {
-    <p>The number of local players is required</p>
-  }
+  <label for="genre">Genre</label>
+  <input id="genre" type="text" formControlName="genre">
 
-  <label for="onlinePlayers">Online Players</label>
-  <input id="onlinePlayers" type="number" formControlName="onlinePlayers">
-  @if (
-    gameForm.hasError('playerRatio') && gameForm.controls.localPlayers.touched && gameForm.controls.onlinePlayers.touched) {
-    <p>The number of online players must be higher then local, for games that support online features.</p>
-  }
+  <label for="platform">Platform</label>
+  <input id="platform" type="text" formControlName="platform">
+
+  <label for="publisher">Publisher</label>
+  <input id="publisher" type="text" formControlName="publisher">
+
+  <label for="developer">Developer</label>
+  <input id="developer" type="text" formControlName="developer">
 
   <button type="submit" [disabled]="gameForm.invalid">{{ id() ? 'Save Changes' : 'Add Game' }}</button>
 

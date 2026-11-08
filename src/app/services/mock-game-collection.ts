@@ -10,17 +10,20 @@ export class MockGameCollection {
     {
       id: 1,
       name: 'Game 1',
-      latestVer: 1.0,
       releaseDate: 'jan 1, 2025',
-      localPlayers: 1,
-      onlinePlayers: 4,
+      platform: '',
+      genre: '',
+      publisher: '',
+      developer: '',
     },
     {
       id: 2,
       name: 'Game 2',
-      latestVer: 2.0,
       releaseDate: 'jan 1, 2026',
-      localPlayers: 2,
+      platform: '',
+      genre: '',
+      publisher: '',
+      developer: '',
     },
   ]);
 
@@ -28,20 +31,14 @@ export class MockGameCollection {
     switch (this.config.defaultFilter) {
       case 'all':
         return this.games();
-      case 'single':
-        return this.games().filter((game) => game.localPlayers == 1);
-      case 'duo':
-        return this.games().filter((game) => game.localPlayers == 2);
-      case 'squad':
-        return this.games().filter((game) => game.localPlayers == 4);
       default:
         return this.games();
     }
-  }); // i'll admit i got a little experimental here. hopefully i didnt do anything i wasnt supposed to.
+  });
 
-  onlineGames = computed(() => this.gamesList().filter((game) => game.onlinePlayers !== undefined));
+  //onlineGames = computed(() => this.gamesList().filter((game) => game.onlinePlayers !== undefined));
 
-  onlineGameCount = computed(() => this.onlineGames().length);
+  //onlineGameCount = computed(() => this.onlineGames().length);
 
   constructor() {
     effect(() => {

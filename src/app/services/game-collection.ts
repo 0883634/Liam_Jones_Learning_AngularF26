@@ -1,85 +1,63 @@
 import { Service, signal, computed, effect, inject, Injectable } from '@angular/core';
 import { Game } from '../shared/models/game';
 import { APP_CONFIG } from '../shared/config/configuration';
+import { HttpClient } from '@angular/common/http';
 
 @Service()
 export class GameCollection {
+  private http = inject(HttpClient);
   private config = inject(APP_CONFIG);
 
-  private games = signal<Game[]>([
-    {
-      id: 1,
-      name: 'Minecraft',
-      latestVer: 1.21,
-      releaseDate: 'nov 18, 2011',
-      localPlayers: 4,
-      onlinePlayers: 30,
-    },
-    {
-      id: 2,
-      name: 'Knack',
-      latestVer: 1.0,
-      releaseDate: 'nov 15, 2013',
-      localPlayers: 2,
-    },
-    {
-      id: 3,
-      name: 'Bloodborne',
-      latestVer: 1.09,
-      releaseDate: 'mar 24, 2015',
-      localPlayers: 1,
-      onlinePlayers: 5,
-    },
-    {
-      id: 4,
-      name: 'Hollow Knight',
-      latestVer: 1.5,
-      releaseDate: 'feb 24, 2017',
-      localPlayers: 1,
-    },
-    {
-      id: 5,
-      name: 'Darksouls',
-      latestVer: 1.03,
-      releaseDate: 'sept 22, 2011',
-      localPlayers: 1,
-      onlinePlayers: 6,
-    },
-    {
-      id: 6,
-      name: "No Man's Sky",
-      latestVer: 4.7,
-      releaseDate: 'aug 9, 2016',
-      localPlayers: 1,
-      onlinePlayers: 32,
-    },
-  ]);
+  private games = signal<Game[]>([]);
 
-  //gamesList = this.games.asReadonly();
+  isLoading = signal(false);
+  error = signal<string | null>(null);
 
   gamesList = computed(() => {
     switch (this.config.defaultFilter) {
       case 'all':
         return this.games();
-      case 'single':
-        return this.games().filter((game) => game.localPlayers == 1);
-      case 'duo':
-        return this.games().filter((game) => game.localPlayers == 2);
-      case 'squad':
-        return this.games().filter((game) => game.localPlayers == 4);
       default:
         return this.games();
     }
-  }); // i'll admit i got a little experimental here. hopefully i didnt do anything i wasnt supposed to.
+  }); // im probably gonna have to come back and add stuff back to this.
 
-  onlineGames = computed(() => this.gamesList().filter((game) => game.onlinePlayers !== undefined));
+  //onlineGames = computed(() => this.gamesList().filter((game) => game.onlinePlayers !== undefined));
 
-  onlineGameCount = computed(() => this.onlineGames().length);
+  //onlineGameCount = computed(() => this.onlineGames().length);
   constructor() {
+    this.load();
+
     effect(() => {
       console.log('Size of games collection: ', this.gamesList());
     });
   }
+
+  load() {
+    this.isLoading.set(true);
+
+    this.http.get<any[]>(`${this.config.apiBaseUrl}/games`).subscribe({
+      next: (list) => {
+        this.games.set(list.map((game) => ({
+            id: game.id,
+            name: game.title,
+            releaseDate: game.release_date,
+            platform: game.platform,
+            genre: game.genre,
+            publisher: game.publisher,
+            developer: game.developer,
+          })),
+        );
+
+        this.isLoading.set(false);
+      },
+      error: () => {
+        this.error.set('Could not load data.');
+        this.isLoading.set(false);
+      },
+    });
+  }
+
   removeGame(id: number): void {
     this.games.update((list) => list.filter((game) => game.id !== id));
   }
@@ -93,7 +71,8 @@ export class GameCollection {
   }
 
   updateGame(updatedGame: Game): void {
-    this.games.update((list) => list.map((game) => (game.id === updatedGame.id ? updatedGame : game)),
+    this.games.update((list) =>
+      list.map((game) => (game.id === updatedGame.id ? updatedGame : game)),
     );
   }
 }

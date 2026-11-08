@@ -3,6 +3,7 @@ import { GameList } from './game-list/game-list'
 import { GameDetail } from './game-detail/game-detail'
 import { GameForm } from './game-form/game-form';
 import { editGuard } from './services/edit-guard';
+import { gameResolver } from './services/game-resolver';
 
 export const routes: Routes = [
   {
@@ -26,5 +27,8 @@ export const routes: Routes = [
   {
     path: 'games/:id',
     component: GameDetail,
+    resolve: {
+      game: gameResolver,
+    },
   },
 ];
