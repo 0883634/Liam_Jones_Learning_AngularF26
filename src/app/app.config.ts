@@ -6,12 +6,13 @@ import { GameCollection } from './services/game-collection';
 import { MockGameCollection } from './services/mock-game-collection';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { loadingInterceptor } from './services/loading-intercepter';
+import { errorInterceptor } from './services/error-intercepter';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(withInterceptors([loadingInterceptor])),
+    provideHttpClient(withInterceptors([loadingInterceptor, errorInterceptor])),
     {
       provide: APP_CONFIG,
       useValue: {

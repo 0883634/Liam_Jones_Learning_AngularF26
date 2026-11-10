@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { Game } from './shared/models/game';
 import { GameList } from './game-list/game-list';
 import { Navbar } from './navbar/navbar';
+import { inject } from '@angular/core';
+import { ErrorService } from './services/error-service';
 
 @Component({
   imports: [RouterOutlet, GameList, Navbar],
@@ -11,5 +13,5 @@ import { Navbar } from './navbar/navbar';
   templateUrl: './app.html',
 })
 export class App {
-
+  errorService = inject(ErrorService);
 }
