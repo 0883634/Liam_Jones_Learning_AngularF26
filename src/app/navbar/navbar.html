@@ -1,8 +1,13 @@
 <nav>
-  <button routerLink="/games">Games</button>
-  <button routerLink="/games/new">Add Game</button>
+  @if(loadingService.isLoading()) {
+    <p>the service is loading...</p>
+  } @else {
+    <button routerLink="/games">Games</button>
+    <button routerLink="/games/new">Add Game</button>
 
-  <button (click)="guardService.toggle()">
-    {{ guardService.guardEnabled() ? 'Unlock Editing' : 'Lock Editing' }}
-  </button>
+    <button (click)="guardService.toggle()">
+      {{ guardService.guardEnabled() ? 'Unlock Editing' : 'Lock Editing' }}
+    </button>
+  }
+
 </nav>
