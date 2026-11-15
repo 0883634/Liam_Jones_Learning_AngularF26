@@ -17,17 +17,27 @@ export class GameForm {
   private fb = inject(FormBuilder);
   private gameCollection = inject(GameCollection);
 
-  gameForm = this.fb.nonNullable.group({
-      name: ['', [Validators.required, Validators.minLength(2), whiteSpaceValidator, leagueOfLegendsValidator]],
+  gameForm = this.fb.nonNullable.group(
+    {
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          whiteSpaceValidator,
+          leagueOfLegendsValidator,
+        ],
+      ],
       releaseDate: [''],
       platform: [''],
       genre: [''],
       publisher: [''],
-      developer: ['']
-  },
+      developer: [''],
+      short_description: [''],
+    },
     {
       //validators: playerValidator
-    }
+    },
   );
 
   constructor() {
@@ -43,11 +53,12 @@ export class GameForm {
       if (game) {
         this.gameForm.patchValue({
           name: game.name,
+          short_description: game.short_description,
           releaseDate: game.releaseDate,
           platform: game.platform,
           genre: game.genre,
           publisher: game.publisher,
-          developer: game.developer
+          developer: game.developer,
         });
       }
     });
@@ -72,9 +83,9 @@ export class GameForm {
         platform: '',
         genre: '',
         publisher: '',
-        developer: ''
+        developer: '',
+        short_description: ''
       });
-
     }
   }
 }

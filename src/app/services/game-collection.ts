@@ -22,9 +22,7 @@ export class GameCollection {
     }
   }); // im probably gonna have to come back and add stuff back to this.
 
-  //onlineGames = computed(() => this.gamesList().filter((game) => game.onlinePlayers !== undefined));
 
-  //onlineGameCount = computed(() => this.onlineGames().length);
   constructor() {
     this.load();
 
@@ -41,6 +39,7 @@ export class GameCollection {
         this.games.set(list.map((game) => ({
             id: game.id,
             name: game.title,
+            short_description: game.short_description,
             releaseDate: game.release_date,
             platform: game.platform,
             genre: game.genre,

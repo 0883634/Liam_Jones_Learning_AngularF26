@@ -1,6 +1,7 @@
 @if (game(); as g) {
+  <p>Description: {{g.short_description}}</p>
   <p>Platform: {{ g.platform}}</p>
-  <p>Genre: {{ g.genre | uppercase}}</p>
+  <p>Genre: {{ g.genre | genreLabel | uppercase }}</p>
   <p>Publisher: {{ g.publisher }}</p>
   <p>Developer: {{ g.developer }}</p>
   <p>Release Date: {{ g.releaseDate | date:'longDate'}}</p>

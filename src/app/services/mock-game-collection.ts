@@ -10,6 +10,7 @@ export class MockGameCollection {
     {
       id: 1,
       name: 'Game 1',
+      short_description: '',
       releaseDate: 'jan 1, 2025',
       platform: '',
       genre: '',
@@ -19,6 +20,7 @@ export class MockGameCollection {
     {
       id: 2,
       name: 'Game 2',
+      short_description: '',
       releaseDate: 'jan 1, 2026',
       platform: '',
       genre: '',
