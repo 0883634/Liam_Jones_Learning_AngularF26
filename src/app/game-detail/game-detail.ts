@@ -1,8 +1,9 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { GameCollection } from '../services/game-collection';
 import { Game } from '../shared/models/game';
+import { DatePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 @Component({
-  imports: [],
+  imports: [DatePipe, UpperCasePipe, TitleCasePipe],
   selector: 'app-game-detail',
   styleUrl: './game-detail.css',
   templateUrl: './game-detail.html',

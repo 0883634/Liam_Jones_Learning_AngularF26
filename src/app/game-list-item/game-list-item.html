@@ -1,5 +1,5 @@
 <h2 (click)="gameEvent.emit({ id: game().id, action: 'completed' })">
-  {{ game().name }}
+  {{ game().name | titlecase }}
 </h2>
 
 <button [routerLink]="['/games', game().id]">View Details</button>

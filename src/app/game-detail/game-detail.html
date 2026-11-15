@@ -1,9 +1,9 @@
 @if (game(); as g) {
-  <p>Platform: {{ g.platform }}</p>
-  <p>Genre: {{ g.genre }}</p>
+  <p>Platform: {{ g.platform}}</p>
+  <p>Genre: {{ g.genre | uppercase}}</p>
   <p>Publisher: {{ g.publisher }}</p>
   <p>Developer: {{ g.developer }}</p>
-  <p>Release Date: {{ g.releaseDate }}</p>
+  <p>Release Date: {{ g.releaseDate | date:'longDate'}}</p>
 } @else {
 
   <p>Game not found.</p>
