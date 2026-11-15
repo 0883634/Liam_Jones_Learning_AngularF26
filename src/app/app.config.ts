@@ -5,14 +5,14 @@ import {APP_CONFIG} from './shared/config/configuration'
 import { GameCollection } from './services/game-collection';
 import { MockGameCollection } from './services/mock-game-collection';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { loadingInterceptor } from './services/loading-intercepter';
-import { errorInterceptor } from './services/error-intercepter';
+import { loadingIntercepter } from './services/loading-intercepter';
+import { ErrorIntercepter } from './services/error-intercepter';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(withInterceptors([loadingInterceptor, errorInterceptor])),
+    provideHttpClient(withInterceptors([loadingIntercepter, ErrorIntercepter])),
     {
       provide: APP_CONFIG,
       useValue: {

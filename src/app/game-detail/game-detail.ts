@@ -1,7 +1,6 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { GameCollection } from '../services/game-collection';
 import { Game } from '../shared/models/game';
-
 @Component({
   imports: [],
   selector: 'app-game-detail',
