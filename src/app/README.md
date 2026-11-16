@@ -33,3 +33,13 @@ Application bundle generation complete. [3.605 seconds] - 2026-11-15T23:26:09.64
 
 
 Output location: C:\Users\calib\OneDrive\Desktop\Liam_Jones_Learning_AngularF26-assignment-6\dist\LiamJonesLearningAngularF26
+
+
+/////////////////////////////////////////////////////////
+
+Lifecycle:
+when i ran the code in a constructor i got an error. this is because the object hasnt been fully created yet, so it is unable to find the id value.
+
+it seems leaving the detail page triggers the OnDestroy, which means its not being loaded once the page has been closed. 
+
+
