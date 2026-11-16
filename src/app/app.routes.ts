@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
-import { GameList } from './game-list/game-list'
-import { GameDetail } from './game-detail/game-detail'
-import { GameForm } from './game-form/game-form';
+import { GameList } from './game-list/game-list';
 import { editGuard } from './services/edit-guard';
 import { gameResolver } from './services/game-resolver';
 
@@ -17,16 +15,16 @@ export const routes: Routes = [
   },
   {
     path: 'games/new',
-    component: GameForm,
+    loadComponent: () => import('./game-form/game-form').then((m) => m.GameForm),
   },
   {
     path: 'games/edit/:id',
-    component: GameForm,
     canActivate: [editGuard],
+    loadComponent: () => import('./game-form/game-form').then((m) => m.GameForm),
   },
   {
     path: 'games/:id',
-    component: GameDetail,
+    loadComponent: () => import('./game-detail/game-detail').then((m) => m.GameDetail),
     resolve: {
       game: gameResolver,
     },
