@@ -1,12 +1,15 @@
 <div [appHighlight]="''">
-<h2 [appHighlight]="'red'" (click)="gameEvent.emit({ id: game().id, action: 'completed' })">
+<h2 [appHighlight]="'red'"
+    [appConfirm]="'Delete this game?'"
+    (confirmed)="gameEvent.emit({ id: game().id, action: 'completed' })">
   {{ game().name | titlecase }}
 </h2>
 <h3>  {{ game().short_description | truncate}}</h3>
 
 <button [routerLink]="['/games', game().id]">View Details</button>
 <button [routerLink]="['/games/edit', game().id]">Edit</button>
-<button (click)="gameEvent.emit({ id: game().id, action: 'completed' })">Delete</button>
+<button [appConfirm]="'Delete this game?'"
+        (confirmed)="gameEvent.emit({ id: game().id, action: 'completed' })">Delete</button>
 <!--
 <p>Latest Version: {{ game().latestVer }}</p>
 <p>Release Date: {{ game().releaseDate }}</p>

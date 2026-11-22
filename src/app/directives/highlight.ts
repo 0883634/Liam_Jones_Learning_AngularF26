@@ -1,4 +1,4 @@
-import { Directive, input, signal } from '@angular/core';
+import { Directive, Input, input, signal } from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]',
