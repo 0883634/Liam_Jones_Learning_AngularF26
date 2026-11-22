@@ -1,9 +1,10 @@
-import { Component, effect, inject, input } from '@angular/core';
+import { Component, effect, inject, input, afterNextRender, ElementRef, viewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GameCollection } from '../services/game-collection';
 import { whiteSpaceValidator } from '../services/validators/whiteSpace-validator';
 import { leagueOfLegendsValidator } from '../services/validators/leagueOfLegends-validator';
 import { playerValidator } from '../services/validators/player-validator';
+
 
 
 @Component({
@@ -16,6 +17,7 @@ export class GameForm {
   id = input<number>();
   private fb = inject(FormBuilder);
   private gameCollection = inject(GameCollection);
+  firstField = viewChild<ElementRef<HTMLInputElement>>('firstField');
 
   gameForm = this.fb.nonNullable.group(
     {
@@ -62,6 +64,10 @@ export class GameForm {
         });
       }
     });
+
+    afterNextRender(() => {
+      this.firstField()?.nativeElement.focus();
+    });
   }
 
   onSubmit(): void {
@@ -84,7 +90,7 @@ export class GameForm {
         genre: '',
         publisher: '',
         developer: '',
-        short_description: ''
+        short_description: '',
       });
     }
   }

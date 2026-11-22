@@ -3,7 +3,7 @@
 <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
 
   <label for="name">Game Name</label>
-  <input id="name" type="text" formControlName="name">
+  <input #firstField id="name" type="text" formControlName="name">
   @if (gameForm.controls.name.touched && gameForm.controls.name.hasError('required')) {
     <p>A game name is required.</p>
   }
