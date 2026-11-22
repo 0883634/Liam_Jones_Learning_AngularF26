@@ -1,4 +1,5 @@
-<h2 (click)="gameEvent.emit({ id: game().id, action: 'completed' })">
+<div [appHighlight]="''">
+<h2 [appHighlight]="'red'" (click)="gameEvent.emit({ id: game().id, action: 'completed' })">
   {{ game().name | titlecase }}
 </h2>
 <h3>  {{ game().short_description | truncate}}</h3>
@@ -32,3 +33,4 @@
   <p>no online multiplayer</p>
 }
 -->
+</div>
