@@ -17,6 +17,13 @@ export interface GameEvent {
   selector: 'app-game-list-item',
   styleUrl: './game-list-item.css',
   templateUrl: './game-list-item.html',
+
+  hostDirectives: [
+    {
+      directive: Highlight,
+      inputs: ['appHighlight: highlightColor'],
+    },
+  ],
 })
 export class GameListItem {
   game = input.required<Game>();

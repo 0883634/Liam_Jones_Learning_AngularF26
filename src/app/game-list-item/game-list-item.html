@@ -1,4 +1,4 @@
-<div [appHighlight]="''">
+<div>
 <h2 [appHighlight]="'red'"
     [appConfirm]="'Delete this game?'"
     (confirmed)="gameEvent.emit({ id: game().id, action: 'completed' })">
