@@ -1,4 +1,7 @@
 @if (game(); as g) {
+  <button (click)="saved.toggle(g.id)">
+    {{ saved.isSaved(g.id) ? 'Unsave' : 'Save' }}
+  </button>
   <p>Description: {{g.short_description}}</p>
   <p>Platform: {{ g.platform}}</p>
   <p>Genre: {{ g.genre | genreLabel | uppercase }}</p>

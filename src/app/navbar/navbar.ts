@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, effect, signal, inject } from '@angular/core';import { RouterLink } from '@angular/router';
 import { GuardService } from '../services/guard';
 import { LoadingService } from '../services/loading-service';
+import { Theme } from '../services/theme';
+
 
 @Component({
   selector: 'app-navbar',
@@ -13,4 +14,5 @@ import { LoadingService } from '../services/loading-service';
 export class Navbar {
   guardService = inject(GuardService);
   loadingService = inject(LoadingService);
+  protected theme = inject(Theme);
 }

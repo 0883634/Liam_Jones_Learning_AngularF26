@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { GameCollection } from '../services/game-collection';
 import {GameEvent, GameListItem} from '../game-list-item/game-list-item';
 

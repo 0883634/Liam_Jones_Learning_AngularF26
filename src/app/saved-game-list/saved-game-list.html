@@ -1,0 +1,19 @@
+<h2>Saved Games</h2>
+
+@if (savedGames().length === 0) {
+
+  <p>No saved games yet.</p>
+
+} @else {
+
+  @for (game of savedGames(); track game.id) {
+
+    <p>
+      <a [routerLink]="['/games', game.id]">
+        {{ game.name }}
+      </a>
+    </p>
+
+  }
+
+}

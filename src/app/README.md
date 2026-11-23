@@ -43,3 +43,6 @@ when i ran the code in a constructor i got an error. this is because the object 
 it seems leaving the detail page triggers the OnDestroy, which means its not being loaded once the page has been closed. 
 
 
+//////////////////////////////////////////////////////////
+
+i stored a toggle for dark mode in memory. i chose to store this in memory because it is a setting that the user would not want to manually re apply each time they reload the screen. 

@@ -14,6 +14,10 @@ export const routes: Routes = [
     component: GameList,
   },
   {
+    path: 'saved',
+    loadComponent: () => import('./saved-game-list/saved-game-list').then((m) => m.SavedGameList),
+  },
+  {
     path: 'games/new',
     loadComponent: () => import('./game-form/game-form').then((m) => m.GameForm),
   },

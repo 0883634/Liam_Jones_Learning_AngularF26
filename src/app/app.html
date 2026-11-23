@@ -1,3 +1,4 @@
+<div [class.dark-mode]="theme.darkMode()">
 <app-navbar></app-navbar>
 @if (errorService.message()) {
   <h2>{{ errorService.message() }}</h2>
@@ -7,3 +8,4 @@
     </button>
 }
 <router-outlet></router-outlet>
+</div>

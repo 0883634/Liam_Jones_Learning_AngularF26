@@ -3,10 +3,14 @@
     <p>the service is loading...</p>
   } @else {
     <button routerLink="/games">Games</button>
+    <button routerLink="/saved">Saved Games</button>
     <button routerLink="/games/new">Add Game</button>
 
     <button (click)="guardService.toggle()">
       {{ guardService.guardEnabled() ? 'Unlock Editing' : 'Lock Editing' }}
+    </button>
+    <button (click)="theme.toggleTheme()">
+      {{ theme.darkMode() ? 'Light Mode' : 'Dark Mode' }}
     </button>
   }
 

@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Game } from './shared/models/game';
 import { GameList } from './game-list/game-list';
 import { Navbar } from './navbar/navbar';
 import { inject } from '@angular/core';
 import { ErrorService } from './services/error-service';
+import { Theme } from './services/theme';
 
 @Component({
   imports: [RouterOutlet, GameList, Navbar],
@@ -13,5 +14,7 @@ import { ErrorService } from './services/error-service';
   templateUrl: './app.html',
 })
 export class App {
+  protected theme = inject(Theme);
   errorService = inject(ErrorService);
+  protected readonly Navbar = Navbar;
 }
